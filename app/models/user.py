@@ -6,7 +6,7 @@ from app.core.database import Base
 
 class User(Base):
     __tablename__ = "users"
-    __table_args__ = {"schema": "beekeeper"}
+    __table_args__ = {"schema": "public"}
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String(255), unique=True, nullable=False, index=True)

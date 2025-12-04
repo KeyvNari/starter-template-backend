@@ -52,7 +52,7 @@ def include_object(object, name, type_, reflected, compare_to):
     """
     if type_ == "table":
         # Only include tables from beekeeper schema
-        return object.schema in ["beekeeper"]
+        return object.schema in ["public"]
     return True
 
 
@@ -74,7 +74,7 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
-        version_table_schema="beekeeper",  # Use the same schema as your tables
+        version_table_schema="public",  # Use the same schema as your tables
         include_schemas=False,
         include_object=include_object,
         compare_type=True,
@@ -102,7 +102,7 @@ def run_migrations_online() -> None:
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
-            version_table_schema="beekeeper",  # Use the same schema as your tables
+            version_table_schema="public",  # Use the same schema as your tables
             include_schemas=False,  # Only track beekeeper schema
             include_object=include_object,
             compare_type=True,

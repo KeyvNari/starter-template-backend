@@ -6,7 +6,7 @@ from app.core.database import Base
 
 class TokenDB(Base):
     __tablename__ = "tokens"
-    __table_args__ = {"schema": "beekeeper"}
+    __table_args__ = {"schema": "public"}
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, nullable=False)
@@ -21,7 +21,7 @@ class TokenDB(Base):
 
 class VerificationToken(Base):
     __tablename__ = "verification_tokens"
-    __table_args__ = {"schema": "beekeeper"}
+    __table_args__ = {"schema": "public"}
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, nullable=False)
@@ -33,7 +33,7 @@ class VerificationToken(Base):
 
 class PasswordResetToken(Base):
     __tablename__ = "password_reset_tokens"
-    __table_args__ = {"schema": "beekeeper"}
+    __table_args__ = {"schema": "public"}
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, nullable=False)
@@ -47,7 +47,7 @@ class SocialAccount(Base):
     __tablename__ = "social_accounts"
     __table_args__ = (
         UniqueConstraint('user_id', 'provider', 'provider_user_id', name='unique_user_provider_account'),
-        {"schema": "beekeeper"}
+        {"schema": "public"}
     )
 
     id = Column(Integer, primary_key=True, index=True)
